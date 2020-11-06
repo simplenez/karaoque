@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Initial setup
 
-Run `ng ci` to install from package-lock.json (faster).  Or run 'ng i' to install from package.json.
+Run `npmm ci` to install from package-lock.json (faster).  Or run 'npm i' to install from package.json.
 
 ## Development server
 
