@@ -1,19 +1,18 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {HomeComponent} from './components/home.component';
+import {RouterModule, Routes} from '@angular/router';
 import {SearchComponent} from './components/search.component';
 import {StatusComponent} from './components/status.component';
-import {AppComponent} from './components/app.component';
+import {HomeComponent} from './components/home.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'search', component: SearchComponent},
   {path: 'status', component: StatusComponent},
-  {path: '**', component: AppComponent}
+  {path: '**', component: HomeComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true, scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

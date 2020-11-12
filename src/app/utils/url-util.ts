@@ -19,4 +19,9 @@ export class UrlUtil {
   static getUrlQuery(): any {
     return this.parseUrlSafely(this.getCurrentUrl()).query;
   }
+
+  static getOrigin(): string {
+    const currentURL = new URL(this.getCurrentUrl());
+    return currentURL.origin;
+  }
 }

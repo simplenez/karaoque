@@ -9,9 +9,12 @@ import {StatusComponent} from './components/status.component';
 import {StoreModule} from '@ngrx/store';
 import {reducers} from './reducers';
 import {EffectsModule} from '@ngrx/effects';
-import {ConnectionEffect} from './effects/connection.effect';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
+import {HttpClientModule} from '@angular/common/http';
+import {VlcService} from './services/vlc.service';
+import {FormsModule} from '@angular/forms';
+import {VlcEffect} from './effects/vlc.effect';
 
 @NgModule({
   declarations: [
@@ -23,11 +26,13 @@ import {environment} from '../environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([ConnectionEffect]),
-    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production})
+    EffectsModule.forRoot([VlcEffect]),
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+    FormsModule
   ],
-  providers: [],
+  providers: [VlcService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

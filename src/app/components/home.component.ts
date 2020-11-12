@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ConnectionInfo} from '../model/ConnectionInfo';
 import {Store} from '@ngrx/store';
-import {State} from '../reducers';
-import {saveConnectionInfoAction} from '../actions/connection.action';
+import {getPassword, State} from '../reducers';
+import {Observable} from 'rxjs';
+import {UrlUtil} from '../utils/url-util';
+
 
 @Component({
   selector: 'app-home',
@@ -10,17 +11,20 @@ import {saveConnectionInfoAction} from '../actions/connection.action';
   styles: []
 })
 export class HomeComponent implements OnInit {
-  connectionInfo: ConnectionInfo;
+  url: string;
+  password$: Observable<string>;
 
   constructor(private store: Store<State>) {
 
   }
 
   ngOnInit(): void {
+    this.password$ = this.store.select(getPassword);
+    this.url = UrlUtil.getOrigin();
   }
 
   saveConnection(): void {
-    this.store.dispatch(saveConnectionInfoAction({connectionInfo: this.connectionInfo}));
+
   }
 
 }

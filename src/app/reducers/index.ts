@@ -1,15 +1,14 @@
 import {ActionReducerMap, createSelector} from '@ngrx/store';
-import {connectionReducers, ConnectionSelectors, ConnectionState} from './connection.reducer';
+import {vlcReducers, VlcSelectors, VlcState} from './vlc.reducer';
 
 export interface State {
-  connectionState: ConnectionState;
+  vlcState: VlcState;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  connectionState: connectionReducers
+  vlcState: vlcReducers
 };
 
-export const getConnectionState = (state: State) => state.connectionState;
-export const isConnectionValid = createSelector(getConnectionState, ConnectionSelectors.isValid);
-export const getConnectionInfo = createSelector(getConnectionState, ConnectionSelectors.getConnectionInfo);
-
+export const getVlcState = (state: State) => state.vlcState;
+export const getPassword = createSelector(getVlcState, VlcSelectors.getPassword);
+export const getVlcStatus = createSelector(getVlcState, VlcSelectors.getStatus);
